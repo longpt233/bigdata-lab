@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     machine1.vm.provision "shell", inline: <<-SHELL
           adduser trino
           usermod -aG sudo trino
-          echo trino ALL=NOPASSWD:ALL > /etc/sudoers.d/vagrant
+          echo trino ALL=NOPASSWD:ALL | sudo tee -a  /etc/sudoers.d/vagrant
         SHELL
     end
 
@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
     machine2.vm.provision "shell", inline: <<-SHELL
           adduser trino
           usermod -aG sudo trino
-          echo trino ALL=NOPASSWD:ALL > /etc/sudoers.d/vagrant
+          echo trino ALL=NOPASSWD:ALL | sudo tee -a  /etc/sudoers.d/vagrant
         SHELL
     end
 end
