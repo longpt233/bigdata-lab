@@ -30,6 +30,18 @@ export HADOOP_HOME="/home/trino/hadoop-3.2.0"
 ./apache-hive-metastore-3.0.0-bin/bin/schematool -initSchema -dbType mysql
 ```
 
+- nếu lỗi thì cần tạo db và cấp quyền
+
+```
+create database metastorehms_586;
+GRANT ALL PRIVILEGES ON metastorehms_586.* TO 'hms'@'10.3.106.254';
+
+#
+SELECT user, host FROM mysql.user;
+SELECT user, host, db, command FROM information_schema.processlist;
+
+```
+
 - khời chạy 
 ```
 ./apache-hive-metastore-3.0.0-bin/bin/start-metastore
@@ -37,7 +49,8 @@ export HADOOP_HOME="/home/trino/hadoop-3.2.0"
 
 
 # cấu hình catalog
-
+- một data source: cần connector (như kiểu driver) + catalog (đại diện cho data source)
+- ví dụ muốn kết nối tới es1 thì cần es connector và catalog es để đại diện cho es1
 - tạo thư mục etc/catalog 
 ```
 vi ./trino-server-424/etc/catalog/hadoop202.properties 

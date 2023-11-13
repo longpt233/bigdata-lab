@@ -24,4 +24,6 @@ hs_err_pid*
 replay_pid*
 /hello-trino/server/.vagrant/
 /.idea/
-/hello-bigdata/target/
+/hello-hadoop/lab101/target/
+/hello-janusgraph/target/
+/hello-hadoop/lab101/target/

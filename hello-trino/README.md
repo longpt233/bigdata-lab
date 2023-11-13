@@ -1,3 +1,7 @@
+# Trino intro
+
+https://engineering.admicro.vn/gioi-thieu-trino-presto-ap-dung-cho-bai-toan-lam-report-tai-team-platform/
+
 # Trino install
 
 - preinstall

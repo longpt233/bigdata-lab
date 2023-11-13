@@ -1,0 +1,1 @@
+/opt/hadoop/bin/hdfs balancer -Ddfs.dfs.datanode.balance.max.concurrent.moves=2500 -Ddfs.balancer.max-size-to-move=322122547200 -Ddfs.datanode.balance.bandwidthPerSec=52428800 -Ddfs.balaer.moverThreads=25000 -threshold 10 -include -f /home/hdfs/logs/balancer/datanodes
