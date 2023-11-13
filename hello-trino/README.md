@@ -122,7 +122,7 @@ for node in 192.168.56.2 192.168.56.3; do
 # Reduce starvation of threads by GClocker, recommend to set about the number of cpu cores (JDK-8192647)
 -XX:+UnlockDiagnosticVMOptions
 -XX:GCLockerRetryAllocationCount=32
-' | ssh trino@$node "cat > trino-server-424/etc/jvm.config" 
+' | ssh trino@$node "cat > trino-server-424/etc/jvm.config && " 
     ssh trino@$node "cat trino-server-424/etc/jvm.config"
 done
 ```
@@ -137,3 +137,31 @@ ssh trino@192.168.56.3 "tail -n 1000  /var/trino/data/var/log/launcher.log"
 ```
 
 - view ui: http://192.168.56.2:8080/ui/
+
+- chạy superset https://superset.apache.org/docs/installation/installing-superset-from-scratch/
+```
+   19  sudo apt-get install build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev default-libmysqlclient-dev
+   20  pip install virtualenv
+   21  sudo apt install python-pip
+   22  pip install virtualenv
+   23  python3 -m venv venv
+   24  sudo apt-get install python3-venv  # lỗi chưa có venv module
+   25  python3 -m venv venv
+   26  . venv/bin/activate
+   27  pip install apache-superset
+   29  pip install --upgrade pip   # lỗi pip ver thấp
+   32  superset db upgrade
+   33  pip install sqlalchemy==1.3.24 # ImportError: cannot import name '_ColumnEntity'
+   34  superset db upgrade
+   37  pip install dataclasses # ModuleNotFoundError: No module named 'dataclasses'
+   38  superset db upgrade
+   39  pip uninstall pyopenssl
+   40  pip install pyopenssl==22.1.0   # ModuleNotFoundError: No module named 'cryptography.hazmat.backends.openssl.x509'
+   41  superset db upgrade   # no err -> oke
+   43  export FLASK_APP=superset
+   44  superset fab create-admin
+   45  superset load_examples
+   46  superset init
+   51  superset run -p 8088 -h 0.0.0.0 --with-threads --reload --debugger
+
+```

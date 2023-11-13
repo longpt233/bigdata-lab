@@ -10,8 +10,6 @@ kubectl apply -f 01-zoo.yaml
 kubectl port-forward kafka-broker-686d8f4bd4-d45rl 9092 -n kafka
 
 
-
-
 kubectl cluster-info
 kubectl cluster-info dump
 kubectl get pods -owide

@@ -18,9 +18,10 @@ Vagrant.configure("2") do |config|
     machine1.vm.provision "shell", inline: <<-SHELL
           adduser trino
           usermod -aG sudo trino
-          echo trino ALL=NOPASSWD:ALL | sudo tee -a  /etc/sudoers.d/vagrant
+          echo trino ALL=NOPASSWD:ALL | sudo tee -a  /etc/sudoers.d/trino
         SHELL
     end
+    # cai cho /etc/sudoers.d/trino dat ten la gi cung dc, tham chi apeend vao file da co thi cx oke
 
     # Khởi tạo máy ảo thứ hai
     config.vm.define "machine2" do |machine2|
@@ -33,7 +34,7 @@ Vagrant.configure("2") do |config|
     machine2.vm.provision "shell", inline: <<-SHELL
           adduser trino
           usermod -aG sudo trino
-          echo trino ALL=NOPASSWD:ALL | sudo tee -a  /etc/sudoers.d/vagrant
+          echo trino ALL=NOPASSWD:ALL | sudo tee -a  /etc/sudoers.d/trino
         SHELL
     end
 end
