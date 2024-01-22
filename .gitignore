@@ -27,3 +27,9 @@ replay_pid*
 /hello-hadoop/lab101/target/
 /hello-janusgraph/target/
 /hello-hadoop/lab101/target/
+/hello-nifi/install/.vagrant/
+/hello-nifi/install/nifi-1.18.0-bin/
+/hello-nifi/install/apache-zookeeper-3.7.2/*
+
+!./hello-nifi/install/apache-zookeeper-3.7.2/conf/log4j.properties
+/hello-nifi/install/apache-zookeeper-3.7.2-bin/
