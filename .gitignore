@@ -33,3 +33,5 @@ replay_pid*
 
 !./hello-nifi/install/apache-zookeeper-3.7.2/conf/log4j.properties
 /hello-nifi/install/apache-zookeeper-3.7.2-bin/
+/hello-prometheus/docker/app/.idea/
+/hello-prometheus/docker/app/venv/
