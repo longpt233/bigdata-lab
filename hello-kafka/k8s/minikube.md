@@ -14,22 +14,11 @@ kubectl cluster-info
 kubectl cluster-info dump
 kubectl get pods -owide
 kubectl get node | grep worker | awk '{print $1}'
-kubectl logs trino-coordinator-6ddf7d4b84-zk7c5
-kubectl exec -it trino-coordinator-6ddf7d4b84-zk7c5 /bin/bash
-
-bin/remove-cluster-on-kubernetes.sh
-bin/deploy-cluster-on-kubernetes.sh
-superset db upgrade
-
 
 git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
 git config --global alias.tree-all "log --all --graph --decorate --oneline"
 git tree
 git reset --hard
-
-
-
-
 
 ```
 
