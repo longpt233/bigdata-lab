@@ -32,3 +32,33 @@
     nifi.zookeeper.root.node=/nifi
 
 ```
+
+# cai 1 node
+
+```
+wget https://dlcdn.apache.org/nifi/1.25.0/nifi-1.25.0-bin.zip
+unzip nifi-1.25.0-bin.zip 
+cd nifi-1.25.0-bin/nifi-1.25.0
+
+# cần chú ý các file sau: nifi.properties, state-management.xml, zookeeper.properties (khi cài embeded)
+
+sed -i 's/nifi.zookeeper.connect.string=$/nifi.zookeeper.connect.string=localhost:2181/g' ./conf/nifi.properties
+sed -i 's/server.1=$/server.1=localhost:2888:3888;2181/g' ./conf/zookeeper.properties
+sed -i 's/nifi.state.management.embedded.zookeeper.start=false$/nifi.state.management.embedded.zookeeper.start=true/g' ./conf/nifi.properties
+sed  -i 's/<property name="Connect String"><\/property>$/<property name="Connect String">localhost:2181<\/property>/g' ./conf/state-management.xml
+
+
+mkdir ./state
+mkdir ./state/zookeeper
+echo 1 > ./state/zookeeper/myid
+
+./bin/nifi.sh set-single-user-credentials admin admin12345678
+./bin/nifi.sh start && tail -f ./logs/nifi-app.log
+
+```
+
+# chú ý:
+
+- không nên dùng embeded zoo của nó vì bản chất con nifi này chạy khá nặng -> tràn ram, chết node là có thế. nếu cài con zoo trên đây thì khả năng cao 1 node chết sẽ kéo theo con zoo chết -> việc bầu lại trên 2 node. 
+
+- khi deploy product thì nên dùng external zoo: chẳng hạn node nó down thì ko ảnh hưởng đến việc leader election của cụm
